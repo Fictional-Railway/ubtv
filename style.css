@@ -1,0 +1,231 @@
+
+@charset "UTF-8";
+
+/* =========================
+   Healing Time
+   TV / Fullscreen Design
+========================= */
+
+:root {
+  --font: "BIZ UDPGothic", "Yu Gothic", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+body {
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 画面全体 */
+
+#screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+/* 背景写真 */
+
+.background {
+  position: absolute;
+  inset: 0;
+  background-image: url("landscape.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* 写真の明るさ調整 */
+
+#dim-layer {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* 時計 */
+
+.clock-area {
+  position: absolute;
+  top: 5.5%;
+  left: 11.2%;
+  z-index: 2;
+  text-align: left;
+  pointer-events: none;
+}
+
+#clock {
+  font-family: var(--font);
+  font-size: clamp(58px, 7.5vw, 145px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+  color: #fff;
+
+  /* 画像のような黒い縁取り */
+  -webkit-text-stroke: 2px #111;
+  text-shadow:
+    2px 2px 0 #111,
+    -1px -1px 0 #111,
+    1px -1px 0 #111,
+    -1px 1px 0 #111;
+}
+
+#date {
+  margin-top: 12px;
+  font-size: clamp(13px, 1.2vw, 24px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-shadow: 1px 1px 3px #222;
+}
+
+/* 右下の番組名 */
+
+.info-area {
+  position: absolute;
+  right: 4%;
+  bottom: 5%;
+  z-index: 2;
+  text-align: right;
+  color: #fff;
+  text-shadow: 1px 1px 4px #222;
+  pointer-events: none;
+}
+
+.program-name {
+  font-size: clamp(13px, 1.1vw, 21px);
+  letter-spacing: 0.12em;
+  font-weight: 400;
+}
+
+.program-subtitle {
+  margin-top: 8px;
+  font-size: clamp(10px, 0.85vw, 16px);
+  opacity: 0.9;
+}
+
+/* 設定ボタン */
+
+#settings-button {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 10;
+
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* マウスを画面の下部に置いたときだけ表示 */
+
+#screen:hover #settings-button,
+#settings-button:focus {
+  opacity: 1;
+}
+
+/* 設定パネル */
+
+#settings-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 20;
+  width: min(360px, 90vw);
+  padding: 28px;
+
+  background: rgba(25, 25, 25, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+#settings-panel h2 {
+  margin: 0 0 24px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#settings-panel label {
+  display: block;
+  margin-bottom: 22px;
+  font-size: 14px;
+}
+
+#settings-panel input[type="range"] {
+  width: 100%;
+  margin-top: 12px;
+}
+
+#settings-panel input[type="checkbox"] {
+  margin-left: 10px;
+}
+
+#close-settings {
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  font-family: var(--font);
+  cursor: pointer;
+}
+
+/* iPhoneや小さい画面 */
+
+@media (max-width: 600px) {
+  .clock-area {
+    top: 5%;
+    left: 5%;
+  }
+
+  #clock {
+    -webkit-text-stroke: 1px #111;
+  }
+
+  .info-area {
+    right: 5%;
+    bottom: 5%;
+  }
+}
+
+/* 動きが苦手な環境では切り替えを減らす */
+
+@media (prefers-reduced-motion: reduce) {
+  #dim-layer {
+    transition: none;
+  }
+}
