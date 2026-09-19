@@ -61,8 +61,13 @@ body {
   font-weight: 700;
   line-height: 1;
 
-  -webkit-text-stroke: 3px #000;
-  text-shadow: 0 0 2px #000;
+  /* 参考画像のような黒い縁取り */
+  -webkit-text-stroke: 2px #111;
+  text-shadow:
+    2px 2px 0 #111,
+    -1px -1px 0 #111,
+    1px -1px 0 #111,
+    -1px 1px 0 #111;
 
   white-space: nowrap;
 }
