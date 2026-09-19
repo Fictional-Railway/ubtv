@@ -3,25 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Healing Time</title>
-
-  <!-- BIZ UDPGothic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <main class="tv-screen">
-    <!--
-      現在は背景をCSSで作っています。
-      後で実写映像・画像・動画に差し替えられるようにしてあります。
-    -->
+  <main class="tv-screen" role="application" aria-label="Healing Time">
     <div class="background"></div>
 
-    <div class="clock" id="clock">0:00</div>
+    <time class="clock" id="clock" datetime="PT0M">0:00</time>
+
+    <div class="channel-display" aria-label="地上デジタル 091">
+      <div class="channel-text">
+        <span class="terrestrial">地上D</span>
+        <span class="channel-number">091</span>
+      </div>
+      <div class="station-logo">HEALING TIME</div>
+    </div>
   </main>
 
   <script src="script.js"></script>
