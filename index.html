@@ -1,58 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Healing Time</title>
+
+  <!-- BIZ UDPGothic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <main id="screen">
-
-    <!-- 背景映像 -->
+  <main class="tv-screen">
+    <!--
+      現在は背景をCSSで作っています。
+      後で実写映像・画像・動画に差し替えられるようにしてあります。
+    -->
     <div class="background"></div>
 
-    <!-- 暗転用のレイヤー -->
-    <div id="dim-layer"></div>
-
-    <!-- 時計 -->
-    <section class="clock-area">
-      <div id="clock">7:00</div>
-      <div id="date"></div>
-    </section>
-
-    <!-- 右下の情報 -->
-    <section class="info-area">
-      <div class="program-name">HEALING TIME</div>
-      <div class="program-subtitle">自然とともに、静かな時間を。</div>
-    </section>
-
-    <!-- 操作ボタン -->
-    <button id="settings-button" aria-label="設定を開く">⚙</button>
-
-    <div id="settings-panel" hidden>
-      <h2>表示設定</h2>
-
-      <label>
-        明るさ
-        <input id="brightness" type="range" min="0" max="100" value="100">
-      </label>
-
-      <label>
-        秒の表示
-        <input id="show-seconds" type="checkbox">
-      </label>
-
-      <label>
-        日付の表示
-        <input id="show-date" type="checkbox" checked>
-      </label>
-
-      <button id="close-settings">閉じる</button>
-    </div>
-
+    <div class="clock" id="clock">0:00</div>
   </main>
 
   <script src="script.js"></script>
